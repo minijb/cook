@@ -195,6 +195,7 @@ python -m venv .venv && .venv/Scripts/python -m pip install -r requirements.txt
 | skill | 触发场景 |
 | ---- | ---- |
 | `context-build` | 对话中构建上下文：先查知识库 / 找相关节点 / 新任务开始 / "之前聊过的 X 在哪" |
+| `context-align` | "对齐一下""讨论下方向""帮我确认关键决策""别猜，问我"——基于知识库证据逐轮提问，对齐方向与关键决策，结论沉淀回库 |
 | `knowledge-save` | "记住这个""存到知识库""记录这条"——新建/更新任意类别节点 |
 | `spec-manage` | "定个规范""新建 SPEC""修订规范" |
 | `reference-add` | "搜个资料""找个参考""引入外部内容"——网络搜索后入库为 reference 节点 |
@@ -206,6 +207,7 @@ python -m venv .venv && .venv/Scripts/python -m pip install -r requirements.txt
 - **定规范**（spec-manage）：`spec add <标题>` → 补规范正文与术语 → `node set --add-tag/--add-ref` 挂接。
 - **引参考**（reference-add）：网络搜索（agent 工具）→ `ref add <id> --url`（脚本自动抓标题/描述，并同步进所挂 tag 的网页资源索引）→ 补要点与 keywords。
 - **写教程**：确定主题（挂哪个 tag/project/spec）→ `tut add <id> --tags … --project …` 生成骨架 → 撰写正文 → `check` 校验元数据指向。
+- **方向对齐**（context-align）：先消解话术歧义（多解歧义→选项题 / 欠指定→补充题 / 指代不明→消解题）→ `match` 装载上下文并盘库缺口（空白/断裂/规范缺口/冲突）→ 每问先过**实质闸门**（答案不改变行动则降级为假设台账）+ 选项必须判别（殊途同归不问）→ 结论沉淀（关键决策用 MADR-lite 决策记录，含被否选项）→ `check`。
 - **健康自愈**：`check` → 按下表处理 → 复检 → 汇报。**Agent 在每次结构性变更后应主动自检并回报证据**（路径、check 结果、git diff 摘要）；变更落定后建议 git commit（不确定时先问用户）。
 
 ## 10. check 结果解读与处置

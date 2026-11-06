@@ -42,6 +42,7 @@ cook 的做法：
 | 「记住：我们项目用 UE5，目标是 60fps」 | 查重 → 建节点/更新节点 → 挂关系 → `check` |
 | 「定个规范：文档命名用日期前缀」 | `spec add` → 写正文与术语 → 挂接 |
 | 「搜下 Nanite 的官方资料存起来」 | 网络搜索 → `ref add --url` 入库 → 挂 tag |
+| 「这个方向怎么定？帮我拍板」 | `context-align`：基于库内证据逐轮提问对齐，结论沉淀回知识库 |
 | 「SPEC-002 讲什么的」 | `node show spec:SPEC-002` |
 | 「渲染和哪些节点有关系」 | `rels tag:rendering` |
 
